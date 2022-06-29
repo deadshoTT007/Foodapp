@@ -7,7 +7,7 @@ const CategoryMealsScreen = (props) => {
     const catId=props.navigation.getParam('categoryId')
     
     const specificMealData=CATEGORIES.find(cat=>cat.id==catId)
-    console.log(catId,specificMealData,"data")
+ 
     return (
       <View style={styles.categoriesScreen}>
           <Text>{specificMealData.title}</Text>
@@ -20,6 +20,16 @@ const CategoryMealsScreen = (props) => {
       </View>
     )
 }
+
+
+CategoryMealsScreen.navigationOptions = navigationData => {
+  console.log(navigationData,"navData")
+  const catId = navigationData.navigation.getParam('categoryId');
+  const selectedCategory = CATEGORIES.find(cat=> cat.id == catId)
+  return{
+    headerTitle:selectedCategory.title
+  }
+} 
 
 const styles=StyleSheet.create({
 categoriesScreen:{

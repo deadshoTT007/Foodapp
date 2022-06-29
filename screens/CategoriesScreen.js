@@ -35,6 +35,7 @@ const CategoriesScreen = (props) => {
 
 
 
+
 const styles=StyleSheet.create({
     flatlist:{
         // flex:1,
@@ -61,5 +62,8 @@ CategoriesScreen.navigationOptions={
         backgroundColor:colors.primaryColor
     }
 }
+
+
+
 
 export default CategoriesScreen
