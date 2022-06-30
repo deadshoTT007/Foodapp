@@ -4,13 +4,20 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Dimensions,
+  FlatList,
+  ScrollView,
+  Image
 } from 'react-native';
+import { MEALS } from '../data/dummy-data';
+
+const {height} = Dimensions.get('window');
 
 const MealItem = props => {
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity onPress={props.onSelectMeal}>
+      <TouchableOpacity style={{flex:3}} onPress={props.onSelect}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground
@@ -26,26 +33,48 @@ const MealItem = props => {
           </View>
           <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
             <Text style={styles.mealList}>{props.duration} min</Text>
-            <Text style={styles.mealList}>{props.complexity.toUpperCase()}</Text>
-            <Text style={styles.mealList}>{props.affordability.toUpperCase()}</Text>
+            <Text style={styles.mealList} >{props.complexity.toUpperCase()}</Text>
+            <Text style={styles.mealList} >{props.affordability.toUpperCase()}</Text>
           </View>
         </View>
       </TouchableOpacity>
+
+      <View style={{flex:1}}>
+        {/* <FlatList data={MEALS} renderItem={(item,index)=>{
+          return(
+          
+          )
+        }}
+        /> */}
+        <ScrollView horizontal nestedScrollEnabled>
+          {MEALS.map((data)=>{
+            console.log(data.imageUrl,"url")
+            return(
+              <Image style={styles.tinyLogo} source={{uri:data.imageUrl}}/>
+            )
+          })}
+        </ScrollView>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  tinyLogo:{
+    height:200,
+    width:200,
+    marginHorizontal: 10
+},
+mealList:{
+  marginRight:10
+},
   mealItem: {
-    height: 200,
+    height: height,
     width: '100%',
     backgroundColor: '#f5f5f5',
     borderRadius: 10,
     overflow: 'hidden',
-    marginBottom:10
-  },
-  mealList:{
-    marginHorizontal:10
+    marginVertical: 10
   },
   bgImage: {
     width: '100%',
@@ -70,7 +99,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   title: {
-    // fontFamily: 'open-sans-bold',
     fontSize: 20,
     color: 'white',
     textAlign: 'center'

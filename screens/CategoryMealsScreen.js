@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet, FlatList } from 'react-native'
+import { View, Text, Button, StyleSheet, FlatList, Image } from 'react-native'
 import { CATEGORIES } from '../data/dummy-data'
 import { MEALS } from '../data/dummy-data'
 import MealItem from '../Components/MealItem'
@@ -31,10 +31,11 @@ const CategoryMealsScreen = (props) => {
 
 
   return (
-
+<>
     <View style={styles.categoriesScreen}>
-      <FlatList style={{width:"100%"}} data={specificMeals} renderItem={renderMealItem} keyExtractor={(item, index) => item.id} />
+      <FlatList data={specificMeals} renderItem={renderMealItem} keyExtractor={(item, index) => item.id} />
     </View>
+    </>
 
   )
 }
@@ -49,8 +50,11 @@ CategoryMealsScreen.navigationOptions = navigationData => {
 }
 
 const styles = StyleSheet.create({
+  tinyLogo:{
+    height:200,
+    width:200
+},
   categoriesScreen: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     // backgroundColor:"blue"

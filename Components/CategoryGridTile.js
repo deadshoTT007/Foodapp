@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View, Text, Platform, Title, StyleSheet, TouchableNativeFeedback } from 'react-native'
+import { TouchableOpacity, View, Text, Platform,Image, Title, StyleSheet, TouchableNativeFeedback } from 'react-native'
 
 const CategoryGridTile = ( props ) => {
     let TouchableComp = TouchableOpacity
@@ -23,11 +23,13 @@ const CategoryGridTile = ( props ) => {
 }
 
 const styles = StyleSheet.create({
+   
     gridItem:{
         flex:1,
         margin:20,
         height:120,
         borderRadius:10,
+        elevation:6,
         overflow:"hidden"
     },
     categoryItem:{
@@ -35,7 +37,6 @@ const styles = StyleSheet.create({
         justifyContent:"flex-end",
         flex:1,
         borderRadius:10,
-        elevation:3,
         padding:15
         // overflow:"hidden"
         // shadowColor:"#000",
