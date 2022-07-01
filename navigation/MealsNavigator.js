@@ -1,4 +1,5 @@
 import React from 'react'
+import { Text } from 'react-native';
 import { Platform } from 'react-native'
 import { colors } from '../colors/Colors'
 import { createStackNavigator } from 'react-navigation-stack'
@@ -67,9 +68,11 @@ const tabConfig={
         navigationOptions:{
             tabBarIcon: (tabInfo) => {
                return( <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor} /> )
-            }
+            },
+            tabBarColor:colors.primaryColor,
+            tabBarLabel:<Text>Kera</Text>
         },
-        tabBarColor:colors.primaryColor
+      
     },
     Favorites:{
         screen:FavNavigator,
@@ -78,7 +81,7 @@ const tabConfig={
             tabBarIcon: (tabInfo) => {
                 return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />
             },
-            tabBarColor:colors.primaryColor
+            tabBarColor:colors.primaryColor,
         }
     },
 }
