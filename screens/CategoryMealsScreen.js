@@ -7,7 +7,10 @@ import MealList from '../Components/MealList'
 
 const CategoryMealsScreen = (props) => {
 
-  const catId = props.navigation.getParam('categoryId')
+  // const catId = props.navigation.getParam('categoryId')
+  // const catId = props.route.params.item
+  const catId= props.navigation.state.params.id
+  console.log(catId,"cat")
 
   const specificMeals = MEALS.filter(meal => meal.categoryIds.includes(catId))
 
@@ -25,7 +28,9 @@ const CategoryMealsScreen = (props) => {
 
 
 CategoryMealsScreen.navigationOptions = navigationData => {
-  const catId = navigationData.navigation.getParam('categoryId');
+  const catId = navigationData.navigation.state.params.id
+  console.log(catId,"nav")
+  // console.log(catId,"catId")
   const selectedCategory = CATEGORIES.find(cat => cat.id == catId)
   return {headerTitle: selectedCategory.title}
 }

@@ -16,8 +16,8 @@ const {height} = Dimensions.get('window');
 
 const MealItem = props => {
   return (
-    <View style={styles.mealItem}>
-      <TouchableOpacity  onPress={props.onSelect}>
+    <View key={props.key} style={styles.mealItem}>
+      <TouchableOpacity onPress={props.onSelect}  >
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground

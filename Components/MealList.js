@@ -16,10 +16,10 @@ const MealList = (props) =>{
             image={itemData.item.imageUrl}
             key={itemData.item.id}
             onSelect={()=>
-            navigation.navigate({routeName:'MealDetail',
-             params:{
-                mealId:itemData.item.id
-            }})
+            navigation.navigate('MealDetail',
+             {
+                id:itemData.item.id
+            })
             }
           />
         )

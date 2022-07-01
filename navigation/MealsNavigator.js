@@ -7,12 +7,13 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import { createAppContainer } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
 import MealDetailScreen from '../screens/MealDetailScreen'
-import CategoryMealsScreen from '../screens/CategoryMealsScreen'
+import FiltersScreen from '../screens/FiltersScreen'
 import CategoriesScreen from '../screens/CategoriesScreen'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import FavoritesScreen from '../screens/FavoritesScreen'
 
 import CustomHeaderButton from '../Components/HeaderButton'
+import CategoryMealsScreen from '../screens/CategoryMealsScreen'
 
 const defaultNavigationOptionsObject={
     headerStyle:{
@@ -91,5 +92,11 @@ const MealsFavTabNavigator = createMaterialBottomTabNavigator(tabConfig,{
         backgroundColor:colors.primaryColor
     }
 }) 
+
+
+const FiltersNavigator = createStackNavigator({
+    Filters: FiltersScreen
+})
+
 
 export default createAppContainer(MealsFavTabNavigator);

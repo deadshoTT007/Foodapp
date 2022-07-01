@@ -6,7 +6,9 @@ import CustomHeaderButton from '../Components/HeaderButton'
 
 const MealDetailScreen = (props) => {
 
-    const mealId = props.navigation.getParam('mealId')
+    console.log([props,"mealProps"])
+
+    const mealId =  props.navigation.state.params.id
 
     const specificMeals = MEALS.find(meal=>meal.id===mealId)
 
@@ -25,7 +27,7 @@ const MealDetailScreen = (props) => {
 }
 
 MealDetailScreen.navigationOptions = (navigationData) => {
-    const mealId = navigationData.navigation.getParam('mealId')
+    const mealId =  navigationData.navigation.state.params.id;
     const selectedMeal = MEALS.find(meal=>meal.id===mealId)
     return {
         headerTitle:selectedMeal.title,
