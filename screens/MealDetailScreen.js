@@ -8,7 +8,7 @@ const MealDetailScreen = (props) => {
 
     const mealId = props.navigation.getParam('mealId')
 
-    const specificMeals = MEALS.filter(meal=>meal.id===mealId)[0]
+    const specificMeals = MEALS.find(meal=>meal.id===mealId)
 
 
 

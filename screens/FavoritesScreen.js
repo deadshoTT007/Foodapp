@@ -18,4 +18,10 @@ categoriesScreen:{
 }
 })
 
+FavoritesScreen.navigationOptions = navigationData=> {
+    return{
+        headerTitle:"Kera"
+    }
+}
+
 export default FavoritesScreen
