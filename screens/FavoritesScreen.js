@@ -1,11 +1,12 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
+import MealList from '../Components/MealList'
+import { MEALS } from '../data/dummy-data'
 
-const FavoritesScreen = () => {
+const FavoritesScreen = ( props ) => {
+    const favorites = MEALS.filter(meal=>meal.id === 'm1' || meal.id === 'm2')
     return (
-      <View style={styles.categoriesScreen}>
-          <Text>The Favorites Screen !</Text>
-      </View>
+      <MealList specificMeals={favorites} navigation={props.navigation}  />
     )
 }
 
@@ -20,7 +21,7 @@ categoriesScreen:{
 
 FavoritesScreen.navigationOptions = navigationData=> {
     return{
-        headerTitle:"Kera"
+        headerTitle:"Your Favorites"
     }
 }
 

@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, FlatList, Image } from 'react-native'
 import { CATEGORIES } from '../data/dummy-data'
 import { MEALS } from '../data/dummy-data'
 import MealItem from '../Components/MealItem'
+import MealList from '../Components/MealList'
 
 const CategoryMealsScreen = (props) => {
 
@@ -10,31 +11,13 @@ const CategoryMealsScreen = (props) => {
 
   const specificMeals = MEALS.filter(meal => meal.categoryIds.includes(catId))
 
-  const renderMealItem = (itemData) => {
-    return (
-      <MealItem
-        title={itemData.item.title}
-        duration={itemData.item.duration}
-        complexity={itemData.item.complexity}
-        affordability={itemData.item.affordability}
-        image={itemData.item.imageUrl}
-        key={itemData.item.id}
-        onSelect={()=>
-        props.navigation.navigate({routeName:'MealDetail',
-         params:{
-            mealId:itemData.item.id
-        }})
-        }
-      />
-    )
-  }
-
 
   return (
 <>
-    <View style={styles.categoriesScreen}>
+    {/* <View style={styles.categoriesScreen}>
       <FlatList data={specificMeals} renderItem={renderMealItem} keyExtractor={(item, index) => item.id} />
-    </View>
+    </View> */}
+    <MealList specificMeals={specificMeals} navigation={props.navigation} />
     </>
 
   )
@@ -47,16 +30,6 @@ CategoryMealsScreen.navigationOptions = navigationData => {
   return {headerTitle: selectedCategory.title}
 }
 
-const styles = StyleSheet.create({
-  tinyLogo:{
-    height:200,
-    width:200
-},
-  categoriesScreen: {
-    justifyContent: "center",
-    alignItems: "center",
-    // backgroundColor:"blue"
-  }
-})
+
 
 export default CategoryMealsScreen

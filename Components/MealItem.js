@@ -17,7 +17,7 @@ const {height} = Dimensions.get('window');
 const MealItem = props => {
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity style={{flex:3}} onPress={props.onSelect}>
+      <TouchableOpacity  onPress={props.onSelect}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground
@@ -46,14 +46,14 @@ const MealItem = props => {
           )
         }}
         /> */}
-        <ScrollView horizontal nestedScrollEnabled>
+        {/* <ScrollView horizontal nestedScrollEnabled>
           {MEALS.map((data)=>{
             console.log(data.imageUrl,"url")
             return(
               <Image style={styles.tinyLogo} source={{uri:data.imageUrl}}/>
             )
           })}
-        </ScrollView>
+        </ScrollView> */}
       </View>
     </View>
   );
@@ -69,7 +69,7 @@ mealList:{
   marginRight:10
 },
   mealItem: {
-    height: height,
+    height: 300,
     width: '100%',
     backgroundColor: '#f5f5f5',
     borderRadius: 10,
