@@ -18,7 +18,8 @@ const MealList = (props) =>{
             onSelect={()=>
             navigation.navigate('MealDetail',
              {
-                id:itemData.item.id
+                id:itemData.item.id,
+                title:itemData.item.title
             })
             }
           />

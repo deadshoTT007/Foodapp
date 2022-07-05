@@ -9,7 +9,19 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import MealsNavigator from './navigation/MealsNavigator';
 import Navigator from './routes/drawer';
+import FiltersScreen from './screens/FiltersScreen';
 import { enableScreens } from 'react-native-screens'
+
+import { createStore, combineReducers } from 'redux';
+import mealsReducer from './store/reducers/meals';
+import { Provider } from 'react-redux'
+
+const rootReducer =combineReducers({
+  meals:mealsReducer
+})
+
+const store = createStore(rootReducer)
+
 // const fetchFonts = () =>{
 //   return Font.loadAsync({
 //        'open-sans':require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -46,16 +58,18 @@ const App = () =>  {
 
   return (
     <>
+    <Provider store={store}>
     {/* <Navigator/> */}
    <MealsNavigator/>
    {/* <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Categories" >
-        <Drawer.Screen name="Categories" component={CategoriesScreen} />
-        <Drawer.Screen name="Favorites" component={FavoritesScreen} />
+      <Drawer.Navigator initialRouteName="Meals" >
+        <Drawer.Screen name="Filters" component={FiltersScreen}/>
+        <Drawer.Screen name="Meals" component={CategoriesScreen}/>
       </Drawer.Navigator>
 
 
     </NavigationContainer> */}
+    </Provider>
    </>
   );
 }

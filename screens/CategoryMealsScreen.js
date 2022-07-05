@@ -1,18 +1,21 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet, FlatList, Image } from 'react-native'
 import { CATEGORIES } from '../data/dummy-data'
-import { MEALS } from '../data/dummy-data'
+// import { MEALS } from '../data/dummy-data'
 import MealItem from '../Components/MealItem'
 import MealList from '../Components/MealList'
+import { useSelector } from 'react-redux'
 
 const CategoryMealsScreen = (props) => {
 
   // const catId = props.navigation.getParam('categoryId')
   // const catId = props.route.params.item
+const selectedMeals = useSelector(state=>state.meals.filteredMeals)
+
   const catId= props.navigation.state.params.id
   console.log(catId,"cat")
 
-  const specificMeals = MEALS.filter(meal => meal.categoryIds.includes(catId))
+  const specificMeals = selectedMeals.filter(meal => meal.categoryIds.includes(catId))
 
 
   return (

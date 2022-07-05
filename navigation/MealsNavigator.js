@@ -36,13 +36,16 @@ const MealsNavigator=createStackNavigator({
     },
     MealDetail:{
         screen:MealDetailScreen,
-        navigationOptions:{
-            headerRight: <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-                <Item title="Fav" iconName="ios-star" onPress={()=>console.log("fav")} />
-            </HeaderButtons>
-        }
+        // navigationOptions:{
+        //     headerRight: <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        //         <Item title="Fav" iconName="ios-star" onPress={()=>console.log("fav")} />
+        //     </HeaderButtons>
+        // }
        
     },
+    Filters:{
+        screen:FiltersScreen
+    }
 
 },{
     defaultNavigationOptions: defaultNavigationOptionsObject
@@ -62,6 +65,11 @@ const FavNavigator = createStackNavigator({
 }
 )
 
+const FiltersNavigator = createStackNavigator({
+    Filters: FiltersScreen
+})
+
+
 const tabConfig={
     Meals: {
         screen:MealsNavigator,
@@ -70,7 +78,7 @@ const tabConfig={
                return( <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor} /> )
             },
             tabBarColor:colors.primaryColor,
-            tabBarLabel:<Text>Kera</Text>
+            tabBarLabel:<Text>Meals</Text>
         },
       
     },
@@ -84,6 +92,7 @@ const tabConfig={
             tabBarColor:colors.primaryColor,
         }
     },
+    
 }
 
 
@@ -97,9 +106,6 @@ const MealsFavTabNavigator = createMaterialBottomTabNavigator(tabConfig,{
 }) 
 
 
-const FiltersNavigator = createStackNavigator({
-    Filters: FiltersScreen
-})
 
 
 export default createAppContainer(MealsFavTabNavigator);
