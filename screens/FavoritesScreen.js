@@ -9,6 +9,14 @@ const FavoritesScreen = ( props ) => {
     // const favorites = selectedMeals.filter(meal=>meal.id === 'm1' || meal.id === 'm2')
     const favMeals = useSelector(state=>state.meals.favoriteMeals)
 
+    if ( favMeals.length === 0 || !favMeals ){
+        return(
+            <View>
+                <Text>No Favorites Selected</Text>
+            </View>
+        )
+    }
+
     return (
       <MealList specificMeals={favMeals} navigation={props.navigation}  />
     )

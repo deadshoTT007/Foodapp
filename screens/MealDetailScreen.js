@@ -9,18 +9,21 @@ import { toggleFavorite } from '../store/actions/meals'
 
 const MealDetailScreen = (props) => {
     const meals = useSelector(state=>state.meals.meals)
-    const all = useSelector(state=>state.meals.favoriteMeals)
+    const favoriteMeals = useSelector(state=>state.meals.favoriteMeals)
 
     const dispatch = useDispatch()
 
-console.log(all,"all")
     
-    const mealId =  props.navigation.state.params.id
+    const mealId =  props.navigation.state.params.id;
+    const currentMealIsFavorite = favoriteMeals.some(meal=>meal.id===mealId)  
     // console.log(meals,mealId,"redux")
     
     const specificMeals = meals.find(meal=>meal.id===mealId)
 
-    // console.log(specificMeals,"url")
+    console.log(currentMealIsFavorite,"favMeals")
+    useEffect(()=>{
+        props.navigation.setParams({ isFav:currentMealIsFavorite })
+    },[currentMealIsFavorite])
 
     const toggleFavoriteHandler = useCallback(()=>{
         console.log("Favorite function")
@@ -78,11 +81,13 @@ MealDetailScreen.navigationOptions = (navigationData) => {
     const title = navigationData.navigation.state.params.title;
     const toggleFavorite = navigationData.navigation.state.params.toggleFav
     const mealId =  navigationData.navigation.state.params.id;
-    const selectedMeal = MEALS.find(meal=>meal.id===mealId)
+    const selectedMeal = MEALS.find(meal=>meal.id===mealId);
+    const isFav = navigationData.navigation.state.params.isFav;
+    console.log(isFav,"fav")
     return {
         headerTitle:title,
         headerRight:( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-            <Item title="Fav" iconName="ios-star" onPress={toggleFavorite} />
+            <Item title="Fav" iconName={isFav?"ios-star":"ios-star-outline"} onPress={toggleFavorite} />
         </HeaderButtons>
         )
     }
