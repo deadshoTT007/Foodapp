@@ -61,14 +61,14 @@ const App = () =>  {
     <Provider store={store}>
     {/* <Navigator/> */}
    <MealsNavigator/>
-   {/* <NavigationContainer>
+   <NavigationContainer>
       <Drawer.Navigator initialRouteName="Meals" >
         <Drawer.Screen name="Filters" component={FiltersScreen}/>
         <Drawer.Screen name="Meals" component={CategoriesScreen}/>
       </Drawer.Navigator>
 
 
-    </NavigationContainer> */}
+    </NavigationContainer>
     </Provider>
    </>
   );

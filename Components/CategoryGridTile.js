@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, View, Text, Platform,Image, Title, StyleSheet, TouchableNativeFeedback } from 'react-native'
 
 const CategoryGridTile = ( props ) => {
-    console.log(props,"props")
+    // console.log(props,"props")
     let TouchableComp = TouchableOpacity
 
     if(Platform.OS === "android" && Platform.Version >= 21){

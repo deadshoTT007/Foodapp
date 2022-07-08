@@ -16,6 +16,15 @@ const selectedMeals = useSelector(state=>state.meals.filteredMeals)
   console.log(catId,"cat")
 
   const specificMeals = selectedMeals.filter(meal => meal.categoryIds.includes(catId))
+  console.log(specificMeals,"spec")
+
+  if ( specificMeals.length === 0 ) {
+    return (
+      <View>
+        <Text>No Meals Found !!!</Text>
+      </View>
+    )
+  }
 
 
   return (
@@ -32,7 +41,7 @@ const selectedMeals = useSelector(state=>state.meals.filteredMeals)
 
 CategoryMealsScreen.navigationOptions = navigationData => {
   const catId = navigationData.navigation.state.params.id
-  console.log(catId,"nav")
+  // console.log(catId,"nav")
   // console.log(catId,"catId")
   const selectedCategory = CATEGORIES.find(cat => cat.id == catId)
   return {headerTitle: selectedCategory.title}

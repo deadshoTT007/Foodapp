@@ -20,13 +20,13 @@ const MealDetailScreen = (props) => {
     
     const specificMeals = meals.find(meal=>meal.id===mealId)
 
-    console.log(currentMealIsFavorite,"favMeals")
+    // console.log(currentMealIsFavorite,"favMeals")
     useEffect(()=>{
         props.navigation.setParams({ isFav:currentMealIsFavorite })
     },[currentMealIsFavorite])
 
     const toggleFavoriteHandler = useCallback(()=>{
-        console.log("Favorite function")
+        // console.log("Favorite function")
         dispatch(toggleFavorite(mealId))
     },[mealId,dispatch])
 
@@ -83,7 +83,7 @@ MealDetailScreen.navigationOptions = (navigationData) => {
     const mealId =  navigationData.navigation.state.params.id;
     const selectedMeal = MEALS.find(meal=>meal.id===mealId);
     const isFav = navigationData.navigation.state.params.isFav;
-    console.log(isFav,"fav")
+    // console.log(isFav,"fav")
     return {
         headerTitle:title,
         headerRight:( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
